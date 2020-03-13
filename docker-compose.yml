@@ -1,0 +1,36 @@
+version: '3'
+services:
+  app:
+    image: registry.manager.one/common/docker/php-nginx:7.3-bionic
+    environment:
+      VIRTUAL_PORT: 80
+      VIRTUAL_HOST: generalmotors.docker.dev
+      YII_ENV: "dev"
+      DEBUG: "true"
+      XDEBUG_HOST: host.docker.internal
+      SQL_HOST: db
+      SQL_DATABASE: gm
+      SQL_USERNAME: sa
+      SQL_PASSWORD: G3n3r4lM0t0rs
+      ENABLE_API: "true"
+      NGINX_UID: 1000
+    volumes:
+      - ./:/data
+    entrypoint: /docker-app-entrypoint.sh
+    command: /init
+    depends_on:
+      - db
+
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    ports:
+      - 20:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: G3n3r4lM0t0rs
+    volumes:
+      - mssql:/var/opt/mssql
+
+volumes:
+  mssql:

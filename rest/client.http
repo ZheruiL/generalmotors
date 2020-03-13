@@ -1,0 +1,28 @@
+###
+GET https://{{url}}/clients?expand=orders,dob&search=.one
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET https://{{url}}/clients?is_new=1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###doesn't work
+GET https://{{url}}/clients?expand=orders,dob&search=.one&is_new=1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+POST https://{{url}}/clients
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "first_name": "first_name",
+  "last_name": "last_name",
+  "email": " email@gmail.com ",
+  "dob": "2000-06-01"
+}
+
+###

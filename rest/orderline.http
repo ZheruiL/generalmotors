@@ -1,0 +1,19 @@
+###
+POST https://{{url}}/orderlines
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "description": "test order",
+  "vehicle_id": 2,
+  "order_id": 1,
+  "client_id": 1,
+  "qty": 20
+}
+
+###
+GET https://{{url}}/orderlines/2?expand=order,vehicle
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###

@@ -1,0 +1,42 @@
+###
+PUT https://{{url}}/vehicles/increase-stock/2
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "qty": 30
+}
+
+###
+PUT https://{{url}}/vehicles/minus-stock/2
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "qty": 40
+}
+
+### create
+POST https://{{url}}/vehicles
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "model_id": 50,
+  "energy_id": 1,
+  "year": 2008,
+  "description": "Nice car",
+  "stock": 80
+}
+
+###
+GET https://{{url}}/vehicles/3
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET https://{{url}}/vehicles?search=hy
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###

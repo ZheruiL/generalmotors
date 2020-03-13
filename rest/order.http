@@ -1,0 +1,47 @@
+###
+GET https://{{url}}/orders?search=202003-1033
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET https://{{url}}/orders?status=2
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET https://{{url}}/orders/1?expand=orderlines
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET https://{{url}}/orders?start_date=2020-03-12&period = day&duration = 2
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+POST https://{{url}}/orders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "description": "test order",
+  "client_id": 1
+}
+
+###
+PUT https://{{url}}/orders/abandon/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PUT https://{{url}}/orders/confirm/2
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+PUT https://{{url}}/orders/done/2
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
