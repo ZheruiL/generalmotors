@@ -34,7 +34,9 @@ class Vehicle extends AbstractVehicle
     public function saveVehicle($params)
     {
         $this->load($params, '');
-        $stock = $this->increaseStock($this->stock);
+        $qty = $this->stock;
+        $this->stock=0;
+        $stock = $this->increaseStock($qty);
         if($stock->hasErrors()){
             return $stock;
         }
