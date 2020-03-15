@@ -3,6 +3,8 @@
     <br>
 </p>
 
+## run docker-compose exec app ./yii database/import-make-n-model before to import the make and model data
+
 ### Consultation des commandes enregistrées qui sont en cours -- GET https://{{url}}/orders?status=2
 
 ### Pouvoir gérer un stock de voitures décliné par marque, par modèle et par type de moteur (l'année peut suffire) -- GET https://{{url}}/vehicles?search=hy
