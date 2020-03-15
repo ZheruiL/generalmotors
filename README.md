@@ -3,7 +3,7 @@
     <br>
 </p>
 
-## run docker-compose exec app ./yii database/import-make-n-model before to import the make and model data
+## run 'docker-compose exec app ./yii database/import-make-n-model' before to import the make and model data
 
 ### Consultation des commandes enregistrées qui sont en cours -- GET https://{{url}}/orders?status=2
 
