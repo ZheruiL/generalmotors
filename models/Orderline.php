@@ -46,15 +46,15 @@ class Orderline extends AbstractOrderline
         ];
     }
 
-    public function saveOrderline($params)
+    public function rules()
     {
-        $this->load($params, '');
-        if($this->order->status !== 0){
-            // only draft order can be added new record
-            $this->addError('order', 'order is not in draft status, can not be modified');
-            return $this;
-        }
-        $this->save();
-        return $this;
+        $rules = parent::rules();
+        $rules[] = ['order_id', function(){
+            if($this->order->status !== 0){
+                // only draft order can be added new record
+                $this->addError('order', 'order is not in draft status, can not be modified');
+            }
+        }];
+        return $rules;
     }
 }

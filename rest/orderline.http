@@ -6,7 +6,7 @@ Authorization: Bearer {{token}}
 {
   "description": "test order",
   "vehicle_id": 2,
-  "order_id": 1,
+  "order_id": 3,
   "client_id": 1,
   "qty": 20
 }

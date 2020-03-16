@@ -25,7 +25,17 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "description": "test order",
+  "description": "test order33",
+  "client_id": 1
+}
+
+###
+PUT https://{{url}}/orders/3
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "description": "fzef order33",
   "client_id": 1
 }
 

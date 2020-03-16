@@ -15,17 +15,10 @@ class OrderlineController extends AbstractController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['create']);
-        unset($actions['update']);
         return $actions;
     }
-
-    public function actionCreate(){
+    /*public function actionCreate(){
         $request = \Yii::$app->request->bodyParams;
         return (new Orderline())->saveOrderline($request);
-    }
-    public function actionUpdate(){
-        $request = \Yii::$app->request->bodyParams;
-        return (new Orderline())->saveOrderline($request);
-    }
+    }*/
 }
