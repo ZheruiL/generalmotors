@@ -9,7 +9,6 @@ use yii\db\ActiveRecord;
 
 class Client extends AbstractClient
 {
-    //todo rules if the dob is under 18 yo => failed
     public function behaviors()
     {
         $behaviors = parent::behaviors();

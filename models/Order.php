@@ -115,9 +115,6 @@ class Order extends AbstractOrder
         }
         else{
             $this->addError('status',$errorMessage);
-            \Yii::$app->response->setStatusCode(406, $errorMessage);
-            return $this;
-            // $this->addError('status',$errorMessage);
         }
         return $this;
     }

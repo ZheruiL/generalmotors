@@ -97,10 +97,6 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            // $access_token = $this->_user->generateAccessToken();
-            // $this->_user->expire_at = (time() + static::EXPIRE_TIME);
-
-
             // We load our key (JWK). It is an encrypted RSA key stored in a file
             // Additional parameters ('kid', 'alg' and 'use') are set for this key (not mandatory but recommended).
             $key = JWKFactory::createFromKeyFile(

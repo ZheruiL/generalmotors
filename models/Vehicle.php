@@ -14,9 +14,6 @@ class Vehicle extends AbstractVehicle
             'id',
             'model_id',
             'model',
-            /*'make'=>function($model){
-                return $model->model->make;
-            },*/
             'energy_id',
             'energy',
             'year',

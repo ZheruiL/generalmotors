@@ -6,6 +6,7 @@ use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
+use yii\web\NotFoundHttpException;
 
 abstract class AbstractController extends ActiveController
 {
@@ -40,14 +41,12 @@ abstract class AbstractController extends ActiveController
         parent::init();
     }
 
-    /**
-     * @return array
-     */
-    /*public function actions()
-    {
-        return [];
-    }*/
 
+    /**
+     * @param $id
+     * @return ActiveRecord|null
+     * @throws NotFoundHttpException
+     */
     protected function findModel($id)
     {
         /** @var ActiveRecord $class */
@@ -55,8 +54,8 @@ abstract class AbstractController extends ActiveController
 
         if (($model = $class::findOne($id)) !== null) {
             return $model;
-        } else {
-            return \Yii::$app->response->setStatusCode(404);
         }
+        // return \Yii::$app->response->setStatusCode(404);
+        throw New NotFoundHttpException();
     }
 }

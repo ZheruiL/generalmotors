@@ -66,17 +66,6 @@ class Admin extends AbstractAdmin implements \yii\web\IdentityInterface
         \Yii::$app->user->login($identity);
 
         return $identity;
-
-        /*$user = static::findOne(['access_token' => $token]);
-
-        if (!$user) {
-            return null;
-        }
-        if ($user->expire_at < time()) {
-            throw new UnauthorizedHttpException('the access - token expired ', -1);
-        } else {
-            return $user;
-        }*/
     }
 
     public function createUser($params){
