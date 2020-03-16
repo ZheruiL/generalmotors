@@ -49,8 +49,7 @@ class Orderline extends AbstractOrderline
     public function saveOrderline($params)
     {
         $this->load($params, '');
-        $order = $this->order;
-        if($order->status !== 0){
+        if($this->order->status !== 0){
             // only draft order can be added new record
             $this->addError('order', 'order is not in draft status, can not be modified');
             return $this;

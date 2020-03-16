@@ -20,7 +20,6 @@ class OrderlineController extends AbstractController
         return $actions;
     }
 
-    // check if order status permit insert
     public function actionCreate(){
         $request = \Yii::$app->request->bodyParams;
         return (new Orderline())->saveOrderline($request);
