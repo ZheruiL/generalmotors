@@ -54,18 +54,6 @@ class Vehicle extends AbstractVehicle
         return $rules;
     }
 
-    public function saveVehicle($params)
-    {
-        $this->load($params, '');
-        $qty = $this->stock;
-        $this->stock=0;
-        $stock = $this->increaseStock($qty);
-        if($stock->hasErrors()){
-            return $stock;
-        }
-        $this->save();
-        return $this;
-    }
     public function increaseStock($qty){
         return $this->changeStock($qty);
     }
@@ -74,7 +62,7 @@ class Vehicle extends AbstractVehicle
     }
     protected function changeStock($qty){
         if($qty===0){
-            $this->addError('stock','the qty can not be 0');
+            $this->addError('qty','the qty can not be 0');
             return $this;
         }
         $this->stock+=$qty;

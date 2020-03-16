@@ -22,23 +22,14 @@ class VehicleController extends AbstractController
     {
         $actions = parent::actions();
         unset($actions['index']);
-        unset($actions['create']);
-        unset($actions['update']);
+        // unset($actions['create']);
+        // unset($actions['update']);
         return $actions;
     }
 
     public function actionIndex(){
         $request = \Yii::$app->request->queryParams;
         return ((new VehicleSearch())->search($request));
-    }
-
-    public function actionCreate(){
-        $request = \Yii::$app->request->bodyParams;
-        return (new Vehicle())->saveVehicle($request);
-    }
-    public function actionUpdate(){
-        $request = \Yii::$app->request->bodyParams;
-        return (new Vehicle())->saveVehicle($request);
     }
 
     public function actionIncreaseStock($id){
