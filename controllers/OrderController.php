@@ -5,6 +5,10 @@ namespace app\controllers;
 use app\models\Order;
 use app\models\search\OrderSearch;
 
+/**
+ * Class OrderController
+ * @method  Order findModel($id)
+ */
 class OrderController extends AbstractController
 {
     public $modelClass = 'app\models\Order';
@@ -28,7 +32,6 @@ class OrderController extends AbstractController
     //todo how to avoid repeating these codes
     public function actionAbandon($id){
         $model = $this->findModel($id);
-        // todo ide
         return $model->abandon();
     }
 
@@ -38,11 +41,11 @@ class OrderController extends AbstractController
     }
     public function actionCancelConfirm($id){
         $model = $this->findModel($id);
-        return $model->CancelConfirm();
+        return $model->cancelConfirm();
     }
     public function actionDone($id){
         $model = $this->findModel($id);
-        return $model->Done();
+        return $model->done();
     }
 
 }

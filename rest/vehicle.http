@@ -1,5 +1,5 @@
 ###
-PUT https://{{url}}/vehicles/increase-stock/2
+PUT https://{{url}}/vehicles/2/increase-stock
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -8,12 +8,12 @@ Authorization: Bearer {{token}}
 }
 
 ###
-PUT https://{{url}}/vehicles/minus-stock/2
+PUT https://{{url}}/vehicles/2/minus-stock
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "qty": 40
+  "qty": 5
 }
 
 ### create

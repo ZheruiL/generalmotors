@@ -53,7 +53,6 @@ class VehicleController extends AbstractController
         $model = $this->findModel($id);
         $request = \Yii::$app->request->bodyParams;
         $qty = ArrayHelper::getValue($request, 'qty', 0);
-        // $model->increaseStock($qty);
         return call_user_func_array(array($model,$method), array($qty));
     }
 

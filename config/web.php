@@ -97,8 +97,8 @@ $config = [
                         'PUT,PATCH {id}' => 'update',
                         'DELETE {id}' => 'delete',
 
-                        'PUT,PATCH increase-stock/{id}' => 'increase-stock',
-                        'PUT,PATCH minus-stock/{id}' => 'minus-stock',
+                        'PUT,PATCH {id}/increase-stock' => 'increase-stock',
+                        'PUT,PATCH {id}/minus-stock' => 'minus-stock',
 
                     ]
                 ],
@@ -109,10 +109,10 @@ $config = [
                         'GET' => 'index',
                         'GET {id}' => 'view',
                         'POST' => 'create',
-                        'PUT,PATCH abandon/{id}' => 'abandon',
-                        'PUT,PATCH confirm/{id}' => 'confirm',
-                        'PUT,PATCH done/{id}' => 'done',
-                        'PUT,PATCH cancel-confirm/{id}' => 'cancel-confirm',
+                        'PUT,PATCH {id}/abandon' => 'abandon',
+                        'PUT,PATCH {id}/confirm' => 'confirm',
+                        'PUT,PATCH {id}/done' => 'done',
+                        'PUT,PATCH {id}/cancel-confirm' => 'cancel-confirm',
 
                         'PUT,PATCH {id}' => 'update',
                         'DELETE {id}' => 'delete',

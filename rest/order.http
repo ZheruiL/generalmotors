@@ -30,17 +30,17 @@ Authorization: Bearer {{token}}
 }
 
 ###
-PUT https://{{url}}/orders/abandon/1
+PUT https://{{url}}/orders/1/abandon
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
-PUT https://{{url}}/orders/confirm/2
+PUT https://{{url}}/orders/2/confirm
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
-PUT https://{{url}}/orders/done/2
+PUT https://{{url}}/orders/2/done
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
