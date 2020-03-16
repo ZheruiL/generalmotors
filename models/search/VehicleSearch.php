@@ -9,12 +9,15 @@ use yii\data\ActiveDataProvider;
  * This is the model class for table "log".
  *
  * @property string $search
- *
+ * @property int $make_id
+ * @property int $energy_id
  */
 class VehicleSearch extends Vehicle
 {
 
     public $search;
+    public $make_id;
+    public $energy_id;
 
     public static function tableName()
     {
@@ -29,6 +32,7 @@ class VehicleSearch extends Vehicle
         return [
             /*[['id', 'model_id', 'energy_id', 'make_id', 'year', 'stock'], 'integer'],
             [['description', 'search'], 'safe'],*/
+            [['model_id', 'energy_id', 'make_id', 'year', 'stock'], 'integer'],
             [['search'], 'safe']
         ];
     }
@@ -52,14 +56,7 @@ class VehicleSearch extends Vehicle
 
         $this->load($params, '');
 
-        if ($this->validate()&&!empty($this->search)) {
-            $int_attrs = [
-                'vehicle.id', 'vehicle.year', 'vehicle.stock'
-            ];
-            $str_attrs = [
-                'vehicle.description', 'model.name', 'make.name', 'e.name'
-            ];
-
+        if($this->validate()){
             $joins= [
                 ['model', 'model.id = vehicle.model_id'],
                 ['make', 'make.id = model.make_id'],
@@ -69,12 +66,27 @@ class VehicleSearch extends Vehicle
                 $query->leftJoin($join[0], $join[1]);
             }
 
-            foreach ($int_attrs as $attr) {
-                $query->orFilterWhere([$attr => intval($this->search)]);
+            $int_attrs = [
+                'vehicle.model_id', 'vehicle.energy_id', 'model.make_id', 'vehicle.year', 'vehicle.energy_id'
+            ];
+            $str_attrs = [
+                'vehicle.description', 'model.name', 'make.name', 'e.name'
+            ];
+            if(empty($this->search)){
+                // search by model_id, energy_id, make_id and year
+                foreach ($int_attrs as $attr) {
+                    $attrId = substr($attr, strpos($attr, '.')+1);
+                    $query->andFilterWhere([$attr => $this->$attrId]);
+                }
             }
-
-            foreach ($str_attrs as $attr) {
-                $query->orFilterWhere(['like', $attr, $this->search]);
+            else{
+                // general search for all columns
+                foreach ($int_attrs as $attr) {
+                    $query->orFilterWhere([$attr => intval($this->search)]);
+                }
+                foreach ($str_attrs as $attr){
+                    $query->orFilterWhere(['like', $attr, $this->search]);
+                }
             }
         }
 

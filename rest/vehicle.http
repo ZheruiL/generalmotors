@@ -34,8 +34,13 @@ GET https://{{url}}/vehicles/3
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
-###
-GET https://{{url}}/vehicles?search=hy
+### search by make id and energy id
+GET https://{{url}}/vehicles?make_id=1&energy_id=1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### general search
+GET https://{{url}}/vehicles?search=jeep
 Content-Type: application/json
 Authorization: Bearer {{token}}
 

@@ -20,8 +20,8 @@ class DatabaseController extends Controller
     //endregion Controllers Actions
 
     public function actionImportMakeNModel(){
-        $path = "web/documents/json/make.json";
-        $file = fopen($path, "r") or die("Unable to open file!");
+        $path = 'web/documents/json/make.json';
+        $file = fopen($path, 'r') or die('Unable to open file!');
         $array = json_decode(fread($file,filesize($path)),true);
         $makes = array();
         foreach ($array as $value){
@@ -33,8 +33,8 @@ class DatabaseController extends Controller
             $makes
         )->execute();
 
-        $path = "web/documents/json/model.json";
-        $file = fopen($path, "r") or die("Unable to open file!");
+        $path = 'web/documents/json/model.json';
+        $file = fopen($path, "r") or die('Unable to open file!');
         $array = json_decode(fread($file,filesize($path)),true);
         $models = array();
         foreach ($array as $value){
