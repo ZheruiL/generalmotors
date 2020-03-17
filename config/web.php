@@ -101,7 +101,7 @@ $config = [
                         'PUT,PATCH {id}/increase-stock' => 'increase-stock',
                         'PUT,PATCH {id}/minus-stock' => 'minus-stock',
 
-                        'POST upload/{id}' => 'upload',
+                        'POST {id}/upload' => 'upload',
                     ]
                 ],
                 [

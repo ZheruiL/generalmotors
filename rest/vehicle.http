@@ -45,7 +45,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ### upload grey card
-POST https://{{url}}/vehicles/upload/2
+POST https://{{url}}/vehicles/2/upload
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 Authorization: Bearer {{token}}
 
