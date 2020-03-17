@@ -44,4 +44,15 @@ GET https://{{url}}/vehicles?search=jeep
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
+### upload grey card
+POST https://{{url}}/vehicles/upload/2
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer {{token}}
+
+--WebAppBoundary
+Content-Disposition: form-data; name="greyCard"; filename="greycard.png"
+
+< ./greycard.png
+--WebAppBoundary--
+
 ###

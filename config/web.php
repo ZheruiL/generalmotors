@@ -73,7 +73,8 @@ $config = [
                     'controller' => 'site',
                     'pluralize' => false,
                     'patterns' => [
-                        'GET' => 'test',
+                        'GET test' => 'test',
+                        'POST upload' => 'upload',
                     ]
                 ],
                 [
@@ -100,6 +101,7 @@ $config = [
                         'PUT,PATCH {id}/increase-stock' => 'increase-stock',
                         'PUT,PATCH {id}/minus-stock' => 'minus-stock',
 
+                        'POST upload/{id}' => 'upload',
                     ]
                 ],
                 [

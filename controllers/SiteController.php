@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\ContactForm;
-use app\models\EntryForm;
+use app\models\upload\UploadForm;
+use yii\web\UploadedFile;
 use app\models\LoginForm;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -65,5 +65,19 @@ class SiteController extends Controller
 
     public function actionTest(){
         return strtotime("20th april 1990");
+    }
+
+    public function actionUpload()
+    {
+        $model = new UploadForm();
+
+        if (\Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                // upload ok
+                return $model;
+            }
+        }
+        return 'no file selected';
     }
 }
