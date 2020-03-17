@@ -45,7 +45,11 @@ class OrderController extends AbstractController
     }
     public function actionDone($id){
         $model = $this->findModel($id);
-        return $model->done();
+        $model = $model->done();
+        if(!$model->hasErrors()){
+            $model->trigger(Order::EVENT_DONE);
+        }
+        return $model;
     }
 
 }

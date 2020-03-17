@@ -5,15 +5,9 @@ namespace app\models;
 use yii\behaviors\TimestampBehavior;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
-use yii\web\UploadedFile;
 
 class Vehicle extends AbstractVehicle
 {
-    /**
-     * @var UploadedFile
-     */
-    public $greyCard;
-
     public function fields()
     {
         return [
@@ -57,7 +51,6 @@ class Vehicle extends AbstractVehicle
                 return $this;
             }
         }];
-        $rules[] = [['greyCard'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, pdf'];
         return $rules;
     }
 
@@ -75,18 +68,5 @@ class Vehicle extends AbstractVehicle
         $this->stock+=$qty;
         $this->save();
         return $this;
-    }
-    public function upload()
-    {
-        if ($this->validate()) {
-            $path = 'documents/vehicle/'.$this->id.'/';
-            if(!is_dir($path)){
-                mkdir($path);
-            }
-            $this->greyCard->saveAs( $path. $this->greyCard->baseName . '.' . $this->greyCard->extension);
-            return true;
-        } else {
-            return false;
-        }
     }
 }

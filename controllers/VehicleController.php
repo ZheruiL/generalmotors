@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\search\VehicleSearch;
 use app\models\upload\UploadForm;
+use app\models\upload\VehicleUpload;
 use app\models\Vehicle;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
@@ -52,11 +53,14 @@ class VehicleController extends AbstractController
     public function actionUpload($id)
     {
         $model = $this->findModel($id);
-        if (\Yii::$app->request->isPost) {
-            $model->greyCard = UploadedFile::getInstanceByName('greyCard');
-            if ($model->upload()) {
-                // upload ok
-                return $model;
+        if(!$model->hasErrors()) {
+            $model = new VehicleUpload();
+            if (\Yii::$app->request->isPost) {
+                $model->greyCard = UploadedFile::getInstanceByName('greyCard');
+                if ($model->upload($id)) {
+                    // upload ok
+                    return $model;
+                }
             }
         }
         return $model;

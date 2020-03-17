@@ -50,7 +50,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
-PUT https://{{url}}/orders/2/done
+PUT https://{{url}}/orders/3/done
 Content-Type: application/json
 Authorization: Bearer {{token}}
 

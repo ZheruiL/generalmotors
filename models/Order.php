@@ -11,6 +11,13 @@ use yii\helpers\ArrayHelper;
 
 class Order extends AbstractOrder
 {
+    const EVENT_DONE = 'done';
+
+    public function init()
+    {
+        $this->on(self::EVENT_DONE, [$this, 'notification']);
+    }
+
     public function behaviors()
     {
         $behaviors = parent::behaviors();
@@ -130,6 +137,10 @@ class Order extends AbstractOrder
             $this->addError('status',$errorMessage);
         }
         return $this;
+    }
+
+    public function notification(){
+        echo 'the order is ready';
     }
 
     public function save($runValidation = true, $attributeNames = null)
