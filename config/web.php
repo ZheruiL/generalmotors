@@ -53,6 +53,21 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'zrli.mone@gmail.com',
+                'password' => '123qweASD&&',
+                'port' => '587',
+                'encryption' => 'TLS',
+            ],
+            'messageConfig'=>[
+                'charset'=>'UTF-8',
+                'from'=>['zrl.mo@outlook.com'=>'zherui']
+            ],
+        ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -118,6 +133,8 @@ $config = [
 
                         'PUT,PATCH {id}' => 'update',
                         'DELETE {id}' => 'delete',
+
+                        'GET test-mail' => 'test-mail'
                     ]
                 ],
                 [

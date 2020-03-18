@@ -114,6 +114,7 @@ class Order extends AbstractOrder
                         }
                     }
                 }
+                $model->trigger(self::EVENT_DONE);
                 return $model;
             });
         } catch (\Exception $e) {
@@ -140,7 +141,14 @@ class Order extends AbstractOrder
     }
 
     public function notification(){
-        echo 'the order is ready';
+        // echo 'the order is ready';
+        $email = $this->client->email;
+        \Yii::$app->mailer->compose()
+            ->setFrom('zrli.mone@gmail.com')
+            ->setTo($email)
+            ->setSubject('Your order is ready')
+            ->setHtmlBody('<b>Your Vehicle is ready, take it asap</b>')
+            ->send();
     }
 
     public function save($runValidation = true, $attributeNames = null)

@@ -45,11 +45,23 @@ class OrderController extends AbstractController
     }
     public function actionDone($id){
         $model = $this->findModel($id);
-        $model = $model->done();
-        if(!$model->hasErrors()){
+        return $model->done();
+        // removed to model file
+        /* $model = $model->done();
+        if(!$model->save()){
             $model->trigger(Order::EVENT_DONE);
         }
-        return $model;
+        return $model;*/
+    }
+    public function actionTestMail(){
+        return
+            \Yii::$app->mailer->compose()
+            ->setFrom('zrli.mone@gmail.com')
+            ->setTo('zherui.li@outlook.com')
+            ->setSubject('Message subject')
+            ->setTextBody('Plain text content')
+            ->setHtmlBody('<b>HTML content</b>')
+            ->send();
     }
 
 }
